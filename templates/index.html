@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ShieldX Dashboard</title>
+    <script src="https://cdn.socket.io/4.7.1/socket.io.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #222; color: #eee; }
+        #dashboard { margin: 20px; }
+        .metric { margin: 10px 0; font-size: 18px; }
+        #video { border: 2px solid #444; }
+    </style>
+</head>
+<body>
+    <h1>ShieldX Real-Time Monitoring</h1>
+    <div id="dashboard">
+        <div class="metric">FPS: <span id="fps">0</span></div>
+        <div class="metric">CPU Usage: <span id="cpu">0</span>%</div>
+        <div class="metric">Detections: <span id="detections">0</span></div>
+        <div class="metric">Bytes Sent: <span id="bytes_sent">0</span></div>
+        <div class="metric">Bytes Received: <span id="bytes_recv">0</span></div>
+    </div>
+
+    <img id="video" src="{{ url_for('video_feed') }}" width="720" />
+
+    <script>
+        const socket = io();
+
+        socket.on('connect', () => {
+            console.log('Connected to SocketIO');
+        });
+
+        socket.on('metrics', data => {
+            document.getElementById('fps').textContent = data.fps;
+            document.getElementById('cpu').textContent = data.cpu;
+            document.getElementById('detections').textContent = data.detection_count;
+            document.getElementById('bytes_sent').textContent = data.bytes_sent;
+            document.getElementById('bytes_recv').textContent = data.bytes_recv;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Python virtual environment folder
+venv/
+
+# SSL certificates (optional, if you don't want to share)
+key.pem
+cert.pem
+
+# Cache and pyc files
+__pycache__/
+*.pyc
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Captured images or videos if large and unnecessary
+captures/
+
+# Optional: You can ignore models/ if too big or regenerate them when needed
+# Uncomment below if models/ can be re-downloaded
+# models/
