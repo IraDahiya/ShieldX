@@ -4,6 +4,7 @@ import cv2
 import psutil
 import time
 from utils.object_detection import detect_objects
+import os
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -71,3 +72,16 @@ def video_feed():
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+
+app = Flask(__name__)
+
+# Your existing routes and code here
+@app.route("/")
+def home():
+    return "ShieldX Security System Running!"
+
+if __name__ == "__main__":
+    # Get the PORT environment variable, default to 5000 if not set
+    port = int(os.environ.get("PORT", 5000))
+    # Run Flask app on all interfaces and the given port
+    app.run(host="0.0.0.0", port=port)
