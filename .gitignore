@@ -14,7 +14,7 @@ __pycache__/
 Thumbs.db
 
 # Captured images or videos if large and unnecessary
-captures/
+#captures/
 
 # Optional: You can ignore models/ if too big or regenerate them when needed
 # Uncomment below if models/ can be re-downloaded
