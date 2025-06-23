@@ -1,0 +1,4 @@
+echo > captures/.gitkeep
+git add captures/.gitkeep
+git commit -m "Add captures folder placeholder"
+git push
